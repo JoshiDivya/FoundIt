@@ -1,0 +1,31 @@
+
+ /* main_color = #282c34;
+ primary+color = #61dafb; */
+
+.section-header{
+    align-items: center;
+    background-color: transparent;
+    color: #282c34 ;
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: 600;
+    font-size: medium;
+   height: 100px;
+   margin-left: auto;
+
+}
+
+.search-section{
+    margin:30px auto;
+    width: 50%;
+}
+.search-div{
+    align-content: center;
+}
+
+.section-data{
+    margin: 30px auto;
+    width: 100%;
+
+}
+
