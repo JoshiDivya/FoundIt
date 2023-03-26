@@ -28,32 +28,9 @@ const useStyle = makeStyles(() => ({
 
 
 export default function Header() {
-  const classes = useStyle();
   return (
-    <div> 
-      <AppBar sx={{background:'transparent'}}  position="static">
-        <CssBaseline />
-        <Toolbar>
-          <Typography sx={{color:'black', fontStyle:'Bold', textShadow:'2px 2px 4px #000000'}} variant="h4" className={classes.logo}>
-            FoundIt
-          </Typography>
-            <div className={classes.navlinks}>
-              <Link to="/" className={classes.link}>
-                Home
-              </Link>
-              <Link to="/about" className={classes.link}>
-                About
-              </Link>
-              <Link to="/contact" className={classes.link}>
-                Contact
-              </Link>
-              <Link to="/faq" className={classes.link}>
-                FAQ
-              </Link>
-            </div>
-         
-        </Toolbar>
-      </AppBar>
+    <div className="section-header"> 
+    <Search/>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import Data from "./Data";
+import ClearIcon from '@mui/icons-material/Clear';
 import {
   FormControl,
   IconButton,
@@ -8,65 +8,57 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@mui/material";
-import { createClient } from "pexels";
 
-const client = createClient(
-  "563492ad6f917000010000013be4449d801c4ac68d2ebb0825b6af1a"
-);
+const Search = ({term,onSearch}) => {
+  const [query, setQuery] = useState(term);
 
-const Search = () => {
-  const [query, setQuery] = useState("nature");
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  function fetchData() {
-    if (query.length > 0)
-      client.photos
-        .search({ query, per_page: 10 })
-        .then((photos) => setData(photos.photos));
-  }
 
   function handleChange(event) {
+    event.preventDefault();
     let term = event.target.value;
     setQuery(term);
-    fetchData();
+    onSearch(term);
   }
+
+  function handleClear() {
+    setQuery("");
+    onSearch("");
+  }
+
+
+
   return (
-    <div>
+    <div className="section-header">
       <section className="search-section">
-        <div className="search-div">
-          <FormControl sx={{ m: 1, width: "100%" }} variant="outlined">
+          <FormControl  sx={{ m: 1, width: "100%" }} variant="standard">
             <InputLabel htmlFor="outlined-adornment-search">Search</InputLabel>
+        
             <OutlinedInput
               id="outlined-adornment-search"
               type="text"
               placeholder="Search Here"
               onChange={handleChange}
               value={query}
-              endAdornment={
-                <InputAdornment position="end">
+              startAdornment={
+                <InputAdornment position="start">
                   <IconButton
                     type="button"
                     sx={{ p: "10px" }}
                     aria-label="search"
-                    onClick={fetchData}
                   >
-                    <SearchIcon />
                   </IconButton>
                 </InputAdornment>
+              }
+              endAdornment={
+                <InputAdornment position="end"><IconButton onClick={handleClear} type="button"><ClearIcon></ClearIcon></IconButton></InputAdornment>
               }
               label="Search"
             />
           </FormControl>
-        </div>
-      </section>
-
-      <Data dataList={data}></Data>
+      </section> 
     </div>
-  );
-};
+ );
+            }
 
 export default Search;
+

@@ -1,19 +1,18 @@
-import Search from "@mui/icons-material/Search";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import About from "./components/About";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import ImageDetail from "./components/ImageDetail";
+import Images from "./components/Images";
+import Videos from "./components/Videos";
 
 
 function App() {
   return (
     <BrowserRouter>
+    <div className="section_logo"><p className="title_logo">Hello</p></div>
       <Routes>
-      <Route path="/" element={<Home/>}></Route>
-              <Route path="/about" element={<About />}></Route>
-              <Route path="/:id" element={<ImageDetail/>}></Route>
+      <Route path="/" element={<Images/>}></Route>
+      <Route path="/images" element={<Images />}></Route>
+      <Route path="/videos" element={<Videos />}></Route>
             </Routes>
  
  </BrowserRouter>
